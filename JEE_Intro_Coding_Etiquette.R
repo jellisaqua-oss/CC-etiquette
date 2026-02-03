@@ -104,10 +104,54 @@ dev.off()
 #calculate_avg_clicks , calculateAvgClicks  # Bad. The convention is that functions are defined using dots, not underscores.
 
 #2.2 Spacing ----
-#Place spaces around all infix operators (=, +, -, <-, etc) Always put a space AFTER a comma, and never before 
+#Place spaces around all infix operators (=, +, -, <-, etc) Always put a space AFTER a comma, and never before
 #Dont place a space before left parentheses, except in function calls func.x ()
 #Extra spacing okay if it improves alignment of equal signs or alignments
 #Do not place spaces around code in parenthese or sqr brackets (unless theres commas)
-#Inline commenting: If you are commenting inline with code, place two spaces after the code, followed by #, a single space and then your text, 
-  #e.g. summary(model)<space><space>#<space>comment.
+#Inline commenting: If you are commenting inline with code, place two spaces after the code, followed by #, a single space and then your text,
+#e.g. summary(model)<space><space>#<space>comment.
 
+#2.3 Curly Braces ----
+#An opening curly brace should never go on its own line and should always be followed by a new line.
+#A closing curly brace should always go on its own line, unless it’s followed by else.
+#Always indent the code inside curly braces.
+
+#2.4 Line Length ----
+#official convention = limit to 80 characters per line
+
+#2.5 Indentation ----
+#If a command runs over multiple lines, indent the second line to where the definition starts
+#When you click ENTER after the + sign, the new line automatically gets indented.
+
+#3 Tidying Up ----
+#Use Code > Reformat, and RStudio will do it for you!
+
+#Or try this:
+
+#Reformat your old code to add in spaces and limit line length
+install.packages("formatR")
+library("formatR")
+
+#Set working directory to where your messy script is
+tidy_source("bad_script.R", file = "tidy_script.R", width.cutoff  = 100)
+# If you don't specify file = "new_script.R", your script will get overwritten, dangerous!
+# If you don't specify a width cutoff point, tidy_source just adds in the spaces
+# 100 characters seems like a reasonable cutoff point
+
+# Reformat all the scripts in a directory
+# Set your working directory to wherever your messy scripts are
+
+# IMPORTANT this will override script files, so make a duplicate back up folder, in case tidy_dir messes up
+tidy_dir(path="C:/Users/ellijoel/OneDrive - Merck Sharp & Dohme LLC/Desktop/CC-etiquette-master", recursive = TRUE)
+# recursive	- whether to look for R scripts in subdirectories of the directory specified under path
+
+#RStudio Addins ----
+#Some handy tools exist to help
+install.packages('addinslist')
+# Insert a box around the introductory section of your script
+install.packages("devtools")
+devtools::install_github("ThinkRstat/littleboxes")
+
+# Afterwards select your introductory comments, click on Addins/ Little boxes and the box appears!
+# Note that if you are also reformatting your code using formatR, reformat the code first, then add the box.
+# formatR messes up these boxes otherwise!
